@@ -1,18 +1,43 @@
-const mix = require('laravel-mix');
+const mix = require("laravel-mix");
 
-/*
- |--------------------------------------------------------------------------
- | Mix Asset Management
- |--------------------------------------------------------------------------
- |
- | Mix provides a clean, fluent API for defining some Webpack build steps
- | for your Laravel applications. By default, we are compiling the CSS
- | file for the application as well as bundling up all the JS files.
- |
- */
+// TODO: Add svg / images / js / scss build pipelines
+// let assetPath = "resources";
+// let publicPath = "public/front";
 
-mix.js('resources/js/app.js', 'public/js')
-    .postCss('resources/css/app.css', 'public/css', [
-        require('postcss-import'),
-        require('tailwindcss'),
-    ]);
+// let sassSource = assetPath + '/sass/';
+// let jsSource = assetPath + '/js/';
+// let imagesSource = assetPath + "/images/";
+// let svgSource = assetPath + '/svg/';
+
+// mix.setPublicPath(publicPath);
+// mix.disableNotifications();
+
+// Sync
+// mix.browserSync({
+//     proxy: process.env.APP_URL,
+//     watchEvents: ["add", "change"],
+//     open: false,
+//     reload: false,
+//     files: [
+//         "public/front/css/**/*.css",
+//         "public/front/js/**/*.js",
+//         "**/*.php",
+//         imagesSource + "/**/*",
+//         "!vendor/**"
+//     ]
+// });
+
+mix.js("resources/js/app.js", "public/js").postCss(
+    "resources/css/app.css",
+    "public/css",
+    [require("postcss-import"), require("tailwindcss")]
+);
+
+// if (mix.inProduction()) {
+//     mix.options({
+//         cssNano: { discardComments: { removeAll: true } },
+//         terser: { terserOptions: { compress: { drop_console: true } } }
+//     }).version();
+// } else {
+//     mix.sourceMaps(false, "source-map");
+// }
