@@ -54,6 +54,16 @@ return [
 
     'url' => env('APP_URL', 'http://localhost'),
 
+    /*
+    |--------------------------------------------------------------------------
+    | Application short URL
+    |--------------------------------------------------------------------------
+    |
+    | This URL is used to properly generate subdomain URLs.
+    |
+    */
+    'short_url' => parse_url(env('APP_URL', 'http://localhost'), PHP_URL_HOST),
+
     'asset_url' => env('ASSET_URL', null),
 
     /*

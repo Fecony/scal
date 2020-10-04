@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Inertia\Inertia;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,10 +14,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::domain('{subdomain}.' . config('app.short_url'))->group(function () {
+    Route::get('/', static function($subdomain) {
+        dd($subdomain); //yay
+    });
+
+    // TODO: Add more routes for dashboard, projects, settings, etc.
+});
+
 Route::get('/', function () {
     return view('welcome');
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return Inertia\Inertia::render('Dashboard');
+    return Inertia::render('Dashboard');
 })->name('dashboard');
